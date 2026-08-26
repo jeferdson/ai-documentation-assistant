@@ -1,0 +1,16 @@
+# Virtual environment
+.venv/
+
+# Secret values and API keys
+.env
+
+# Files generated automatically by Python
+__pycache__/
+*.pyc
+
+# Local logs
+logs/
+*.log
+
+# macOS system files
+.DS_Store
