@@ -1,0 +1,9 @@
+Title: Returning Equipment
+
+Equipment should be returned after the related project has been completed.
+
+A warehouse employee opens the project, selects the return action, and scans each returned item. The system marks scanned equipment as available again.
+
+Items that are damaged or missing should not be marked as normally returned. The employee should record the problem and add a short explanation.
+
+If an item has not been scanned, it remains assigned to the project.

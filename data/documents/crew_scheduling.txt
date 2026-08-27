@@ -1,0 +1,9 @@
+Title: Crew Scheduling
+
+Crew members can be assigned to a project from the scheduling page.
+
+The planner selects a project, chooses the required role, and adds an available crew member. The system warns the planner when a person is already scheduled for another project at the same time.
+
+Crew members receive a notification after the schedule is published.
+
+Removing a crew member from a published schedule sends an updated notification.

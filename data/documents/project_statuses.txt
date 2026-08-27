@@ -1,0 +1,9 @@
+Title: Project Statuses
+
+A project can be in draft, planned, active, completed, or archived status.
+
+Draft projects can be edited or deleted. Planned projects are ready for preparation but have not started yet.
+
+An active project cannot be deleted. It must first be completed or returned to draft status by an authorized user.
+
+Completed projects remain available for reporting. Archived projects are hidden from the standard project overview.
