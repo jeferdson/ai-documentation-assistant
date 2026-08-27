@@ -1,1 +1,2 @@
 # Project dependencies will be added here.
+sentence-transformers==6.0.0

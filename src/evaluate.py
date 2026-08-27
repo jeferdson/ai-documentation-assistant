@@ -1,5 +1,6 @@
 from document_loader import load_documents
 from search import search_documents
+from semantic_search import search_documents_semantically
 
 
 EVALUATION_CASES = [
@@ -22,18 +23,19 @@ EVALUATION_CASES = [
 ]
 
 
-def evaluate_search():
+def evaluate_search(search_name, search_function):
     """Evaluate search quality using predefined questions."""
     documents = load_documents()
     passed_cases = 0
 
-    for case_number, case in enumerate(EVALUATION_CASES, start=1):
-        results = search_documents(case["query"], documents)
+    print(f"\n=== {search_name} ===")
 
-        if results:
-            actual_filename = results[0]["filename"]
-        else:
-            actual_filename = None
+    for case_number, case in enumerate(EVALUATION_CASES, start=1):
+        results = search_function(case["query"], documents)
+
+        actual_filename = (
+           results[0]["filename"] if results else None
+       )
 
         is_correct = actual_filename == case["expected_filename"]
 
@@ -47,17 +49,32 @@ def evaluate_search():
         print(f"Expected: {case['expected_filename']}")
         print(f"Actual: {actual_filename or 'No document found'}")
 
-        if results:
-            print(f"Score: {results[0]['score']}")
-            print(f"Matching words: {', '.join(results[0]['matching_terms'])}")
-
     total_cases = len(EVALUATION_CASES)
     accuracy = passed_cases / total_cases * 100
 
-    print("\nEvaluation summary:")
+    print(f"\n{search_name} summary:")
     print(f"Passed: {passed_cases}/{total_cases}")
     print(f"Accuracy: {accuracy:.1f}%")
 
+    return accuracy
+
+
+def main():
+    """Compare keyword and semantic search quality."""
+    keyword_accuracy = evaluate_search(
+        "Keyword search",
+        search_documents,
+    )
+
+    semantic_accuracy = evaluate_search(
+        "Semantic search",
+        search_documents_semantically
+    )
+
+    print("\n=== Comparison ===")
+    print(f"Keyword search: {keyword_accuracy:.1f}%")
+    print(f"Semantic search: {semantic_accuracy:.1f}%")
+
 
 if __name__ == "__main__":
-    evaluate_search()
+    main()

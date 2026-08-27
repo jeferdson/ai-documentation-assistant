@@ -1,5 +1,5 @@
 from document_loader import load_documents
-from search import search_documents
+from semantic_search import search_documents_semantically
 
 
 def main():
@@ -13,7 +13,7 @@ def main():
         print("Question cannot be empty.")
         return
 
-    results = search_documents(query, documents)
+    results = search_documents_semantically(query, documents)
 
     if not results:
         print("\nNo relevant documents found.")
@@ -23,8 +23,7 @@ def main():
 
     print("\nBest matching document:")
     print(f"File: {best_result['filename']}")
-    print(f"Score: {best_result['score']}")
-    print(f"Matching words: {', '.join(best_result['matching_terms'])}")
+    print(f"Similarity score: {best_result['score']:.3f}")
     print("\nDocument content:")
     print(best_result["content"])
 
